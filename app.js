@@ -1,7 +1,3 @@
-//This section list the required libraries
-var express = require("express");
-//Create an instance of express server
-var app = express();
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -9,8 +5,10 @@ const functions = require('firebase-functions');
 const {WebhookClient,Card,} = require('dialogflow-fulfillment');
 
 const app = express().use(bodyParser.json());
+
 app.post('/fulfillment', functions.https.onRequest((request, response) => {
  const agent = new WebhookClient({ request, response });
+
   function welcome(agent) {
    agent.add(`Welcome to my agent in Heroku!`);
    agent.add(new Card({
